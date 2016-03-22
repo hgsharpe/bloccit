@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @posts = Post.fic(params[:id])
+    @posts = Post.find(params[:id])
   end
 
   def new
