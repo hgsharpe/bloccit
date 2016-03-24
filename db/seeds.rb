@@ -1,8 +1,7 @@
 require 'random_data'
 
 50.times do
-    
-  Post.create!(
+   Post.create!(
       title: RandomData.random_sentence,
       body: RandomData.random_paragraph
     )    
