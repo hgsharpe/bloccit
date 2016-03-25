@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     end
   end
   
- def destroy
+  def destroy
     @post = Post.find(params[:id])
     
     if @post.destroy
@@ -61,5 +61,11 @@ class PostsController < ApplicationController
      flash.now[:alert] = "There was an error deleting the post."
      render :show
     end
- end
+  end
+  
+  private
+  
+  def post_params
+    params.require(:posts).permit(:title, :body)
+  end
 end
