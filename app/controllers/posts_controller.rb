@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @posts = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -29,10 +29,7 @@ class PostsController < ApplicationController
       render :new
     end
   end
-  
-  def title
-  end
-  
+
   def edit
     @post = Post.find(params[:id])
   end
@@ -61,11 +58,5 @@ class PostsController < ApplicationController
      flash.now[:alert] = "There was an error deleting the post."
      render :show
     end
-  end
-  
-  private
-  
-  def post_params
-    params.require(:posts).permit(:title, :body)
   end
 end
