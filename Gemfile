@@ -16,6 +16,7 @@ source 'https://rubygems.org'
  group :development, :test do
    gem 'rspec-rails', '~> 3.0'
    gem 'pry-rails'
+   gem 'awesome_print', :require => 'ap'
  end
  
  # Use SCSS for stylesheets
