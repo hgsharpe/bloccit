@@ -18,7 +18,7 @@ RSpec.describe PostsController, type: :controller do
     
     it "assigns my_post to @post" do
       get :show, topic_id: my_topic.id, id: my_post.id
-      expect(assigns(:post)).to eq(@post)
+      expect(assigns(:my_post)).to eq(@post)
     end
   end
 

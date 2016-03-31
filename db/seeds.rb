@@ -20,8 +20,8 @@ topics = Topic.all
   )
 end
 # Create one more Topic and Post, unique
-unique_topic = Topic.find_or_create_by!(name: 'Celebrities', description: 'Actresses')
-Post.find_or_create_by!(topic: unique_topic, title: 'Scarlett', body: 'Johansson')
+unique_topic = Topic.find_or_create_by!(name: 'Celebrities', description: RandomData.random_paragraph)
+Post.find_or_create_by!(topic: unique_topic, title: 'Scarlett', body: RandomData.random_paragraph)
 posts = Post.all
 
 # Create Comments
@@ -37,7 +37,8 @@ end
   SponsoredPost.create!(
       topic:  topics.sample,
       title:  RandomData.random_sentence,
-      body:   RandomData.random_paragraph
+      body:   RandomData.random_paragraph,
+      price:  10 # RandomData.random_sponsored_post_price
   )
 end
 
@@ -46,12 +47,13 @@ end
   Advertisement.create!(
      title: RandomData.random_sentence,
      copy:  RandomData.random_paragraph,
-     price: RandomData.random_ad_price
+     price: 10 # RandomData.random_sponsored_post_price
   )
 end
 
 # Create Questions
 10.times do
+  
   Question.create!(
     title: RandomData.random_sentence,
     body:  RandomData.random_paragraph,
