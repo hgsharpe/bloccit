@@ -32,3 +32,6 @@ source 'https://rubygems.org'
  
  gem "bootstrap-sass", "3.3.6"
  gem "rake", "~> 11.1.1"
+ 
+ # Used for encrypting User passwords
+ gem 'bcrypt'
