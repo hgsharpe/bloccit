@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:new, :create]
   resources :advertisements, :questions
+  post 'users/confirm' => 'users#confirm'
 
   
   get 'about' => 'welcome#about'
