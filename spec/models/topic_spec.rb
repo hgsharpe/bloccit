@@ -5,6 +5,7 @@ RSpec.describe Topic, type: :model do
   description: RandomData.random_paragraph )}
   
   it { is_expected.to have_many(:posts) }
+  it { should have_many(:sponsored_posts) }
   
   describe "attributes" do
     it "responds to name" do

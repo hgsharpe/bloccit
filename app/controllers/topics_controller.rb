@@ -12,10 +12,6 @@ class TopicsController < ApplicationController
      @topic = Topic.new
    end 
    
-   def edit
-     @topic = Topic.find(params[:id])
-   end
-   
    def create
      @topic = Topic.new
      @topic.name = params[:topic][:name]
@@ -28,6 +24,10 @@ class TopicsController < ApplicationController
        flash.now[:alert] = "Error creating topic. Please try again."
        render :new
      end
+     
+    def edit
+     @topic = Topic.find(params[:id])
+    end
    end
    
    def update
