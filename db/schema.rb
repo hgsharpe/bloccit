@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401013644) do
+ActiveRecord::Schema.define(version: 20160402080955) do
 
   create_table "advertisements", force: :cascade do |t|
     t.string   "title"
@@ -45,9 +45,11 @@ ActiveRecord::Schema.define(version: 20160401013644) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "topic_id"
+    t.integer  "user_id"
   end
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "questions", force: :cascade do |t|
     t.string   "title"
