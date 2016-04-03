@@ -4,7 +4,6 @@
   <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' %>
 <% end %>
  
-<<<<<<< 089c6aa10427b755c8e409810b7c29e73aa19621
  <div class="row">
    <div class="col-md-8">
      <p class="lead"><%= @topic.description %></p>
@@ -21,27 +20,25 @@
 
     <h2>Sponsored Posts</h2>
     <% @topic.sponsored_posts.each do |sponsored_post| %>
-=======
-<div class="row">
-  <div class="col-md-8">
-    <p class="lead"><%= @topic.description %></p>
-    <% @posts.each do |post| %>
->>>>>>> 35-validations
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">
-            <%= link_to post.title, [@topic, post] %>
-          </h4>
-          <small>
-            submitted <%= time_ago_in_words(post.created_at) %> ago by <%=post.user.name %><br><%= post.comments.count %> Comments
-          </small>
-        </div>
+    <div class="row">
+      <div class="col-md-8">
+        <p class="lead"><%= @topic.description %></p>
+        <% @posts.each do |post| %>
+          <div class="media">
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= link_to post.title, [@topic, post] %>
+              </h4>
+              <small>
+                submitted <%= time_ago_in_words(post.created_at) %> ago by <%=post.user.name %><br><%= post.comments.count %> Comments
+              </small>
+            </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-  <div class="col-md-4">
-    <% if policy(Post.new).create? %>
-      <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
-    <% end %>
-  </div>
-</div>
+      <div class="col-md-4">
+        <% if policy(Post.new).create? %>
+          <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
