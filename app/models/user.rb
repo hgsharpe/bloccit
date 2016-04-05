@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   
   before_save { self.email = email.downcase }
   before_save { self.role ||= :member }
+  
 
   validates :name, length: { minimum: 1, maximum: 100 }, presence: true
 

@@ -88,5 +88,4 @@ ActiveRecord::Schema.define(version: 20160405031823) do
     t.datetime "updated_at",      null: false
     t.integer  "role"
   end
-
 end
