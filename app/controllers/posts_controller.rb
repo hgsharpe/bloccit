@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  
   before_action :require_sign_in, except: :show
   before_action :authorize_user, except: [:show, :new, :create]
   
@@ -16,8 +17,10 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.build(post_params)
     @post.user = current_user
-
+    @post.build_rating(severity: params[:post][:rating])
+    
     if @post.save
+      @post.labels = Label.update_labels(params[:post][:labels])      
       flash[:notice] = 'Post was saved.'
       redirect_to [@topic, @post]
     else
@@ -31,11 +34,11 @@ class PostsController < ApplicationController
   end
 
   def update
-    @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
     @post.assign_attributes(post_params)
 
     if @post.save
+      @post.labels = Label.update_labels(params[:post][:labels])      
       flash[:notice] = 'Post was updated.'
       redirect_to [@post.topic, @post]
     else
@@ -63,7 +66,6 @@ class PostsController < ApplicationController
   
   def authorize_user
    post = Post.find(params[:id])
-
    unless current_user == post.user || current_user.admin?
       flash[:alert] = "You must be an admin to do that."
       redirect_to [post.topic, post]

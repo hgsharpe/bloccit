@@ -52,10 +52,10 @@ RSpec.describe User, type: :model do
        end
      end
      
-          context "admin user" do
+     context "admin user" do
        before do
          user.admin!
-       end
+     end
  
        it "returns false for #member?" do
          expect(user.member?).to be_falsey

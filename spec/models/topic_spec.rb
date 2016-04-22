@@ -8,7 +8,9 @@ RSpec.describe Topic, type: :model do
   it { should validate_length_of(:description).is_at_least(15) }
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:description) }
- 
+  it { is_expected.to have_many(:labelings) }
+  it { is_expected.to have_many(:labels).through(:labelings) }
+  
   context "attributes" do
     it "responds to name" do
       expect(topic).to respond_to(:name)
