@@ -20,16 +20,19 @@ class TopicsController < ApplicationController
      @topic = Topic.new(topic_params)
  
      if @topic.save
-      @topic.labels = Label.update_labels(params[:topic][:labels]) 
-       redirect_to @topic, notice: "Topic was saved successfully."
+      
+      @topic.labels = Label.update_labels(params[:topic][:labels])
+      flash[:notice] = "Topic was updated successfully."
+      redirect_to @topic
+      
      else
        flash.now[:alert] = "Error creating topic. Please try again."
        render :new
      end
+   end
      
-    def edit
-     @topic = Topic.find(params[:id])
-    end
+   def edit
+      @topic = Topic.find(params[:id])
    end
    
    def update
