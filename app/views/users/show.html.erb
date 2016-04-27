@@ -18,8 +18,23 @@
      </div>
    </div>
  </div>
+ <% if @user.content_available? %>
  <h2>Posts</h2>
  <%= render @user.posts %>
  
  <h2>Comments</h2>
  <%= render @user.comments %>
+ 
+  <h2>Favorites</h2>
+  <%= render partial: 'favorites/favorites' %>
+ 
+ <% else %>
+<div class="row">
+ <div class="col-md-8">
+   <div class="media-body">
+      <br/>
+      <h4><%="(#{@user.name} has not submitted any posts yet.)" %></h4>
+    </div>
+  </div>
+</div>
+<% end %>
