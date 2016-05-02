@@ -1,4 +1,5 @@
  require 'rails_helper'
+ include RandomData
  
  RSpec.describe Api::V1::TopicsController, type: :controller do
    let(:my_user) { create(:user) }
